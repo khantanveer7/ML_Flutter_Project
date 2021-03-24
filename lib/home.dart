@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:organic_recyclable/header.dart';
 import 'package:tflite/tflite.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -72,90 +73,68 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey[100],
-      body: Container(
-        padding: EdgeInsets.all(20),
+      body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 50),
-            Text(
-              "Organic 🌿",
-              style: TextStyle(
-                fontSize: 35,
-                fontWeight: FontWeight.bold,
-                color: Colors.green,
-              ),
-            ),
-            Text(
-              "Recyclable ♻️",
-              style: TextStyle(
-                fontSize: 35,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue[700],
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              "Based on ML",
-              style: TextStyle(
-                fontSize: 25,
-              ),
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Center(
-              child: _loading
-                  ? Container(
-                      width: 280,
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 150,
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Provide an Image to see result",
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.black,
+            Header(),
+            // ignore: avoid_unnecessary_containers
+            Container(
+              child: Center(
+                child: _loading
+                    ? Container(
+                        width: 280,
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 250,
+                              alignment: Alignment.center,
+                              child: const Text(
+                                // ignore: prefer_double_quotes
+                                'Provide an Image to see result',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    )
-                  : Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 250,
-                            child: Image.file(_image),
-                          ),
-                          SizedBox(height: 20),
-                          _output != null && _output[0]['label'] == "Recyclable"
-                              ? Text(
-                                  '${_output[0]['label']}',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    color: Colors.blue[700],
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                )
-                              : Text(
-                                  '${_output[0]['label']}',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.green,
-                                  ),
+                          ],
+                        ),
+                      )
+                    : Container(
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 250,
+                              child: Image.file(_image),
+                            ),
+                            const SizedBox(height: 20.0),
+                            if (_output != null &&
+                                // ignore: prefer_double_quotes
+                                _output[0]['label'] == 'Recyclable')
+                              Text(
+                                '${_output[0]['label']}',
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.blue[700],
+                                  fontWeight: FontWeight.w600,
                                 ),
-                        ],
+                              )
+                            else
+                              Text(
+                                '${_output[0]['label']}',
+                                style: const TextStyle(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.green,
+                                ),
+                              ),
+                          ],
+                        ),
                       ),
-                    ),
+              ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
+            // ignore: sized_box_for_whitespace
             Container(
               width: MediaQuery.of(context).size.width,
               child: Column(
@@ -165,7 +144,7 @@ class _HomeState extends State<Home> {
                     child: Container(
                       width: MediaQuery.of(context).size.width - 180,
                       alignment: Alignment.center,
-                      padding: EdgeInsets.all(18),
+                      padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(
                         color: Colors.black,
                         borderRadius: BorderRadius.circular(10),
@@ -173,14 +152,14 @@ class _HomeState extends State<Home> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             "Take a Photo ",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 18,
                             ),
                           ),
-                          Icon(
+                          const Icon(
                             Icons.camera_alt,
                             size: 17,
                             color: Colors.white,
@@ -192,7 +171,7 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
               width: MediaQuery.of(context).size.width,
               child: Column(
@@ -202,7 +181,7 @@ class _HomeState extends State<Home> {
                     child: Container(
                       width: MediaQuery.of(context).size.width - 180,
                       alignment: Alignment.center,
-                      padding: EdgeInsets.all(18),
+                      padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(
                         color: Colors.black,
                         borderRadius: BorderRadius.circular(10),
@@ -210,14 +189,14 @@ class _HomeState extends State<Home> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             "Choose a Photo ",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 18,
                             ),
                           ),
-                          Icon(
+                          const Icon(
                             Icons.upload_rounded,
                             size: 20,
                             color: Colors.white,

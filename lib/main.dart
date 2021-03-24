@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:organic_recyclable/home.dart';
+import "package:organic_recyclable/home.dart";
 
 void main() {
   runApp(MyApp());
@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Organic Recyclable",
+      // ignore: prefer_double_quotes
+      title: 'Organic Recyclable',
       home: Home(),
     );
   }
