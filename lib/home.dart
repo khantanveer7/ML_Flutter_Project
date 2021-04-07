@@ -88,13 +88,12 @@ class _HomeState extends State<Home> {
                             Container(
                               height: 250,
                               alignment: Alignment.center,
-                              child: const Text(
-                                // ignore: prefer_double_quotes
-                                'Provide an Image to see result',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                ),
+                              child: Image.asset('assets/upload.png'),
+                            ),
+                            Text(
+                              "Upload an Image",
+                              style: TextStyle(
+                                fontSize: 20,
                               ),
                             ),
                           ],
